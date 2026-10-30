@@ -13,7 +13,46 @@ function add(t, c) {
   chat.scrollTop = chat.scrollHeight;
 }
 
+function 
 function localAnswer(s) {
+  s = s.toLowerCase().trim();
+
+  if (/^(hi|hello|hey|नमस्ते|हेलो|हाय)/.test(s))
+    return 'नमस्ते! 😊 मैं Alex AI हूँ। बताइए, आज मैं आपकी क्या मदद करूँ?';
+
+  if (s.includes('तुम्हारा नाम') || s.includes('your name') || s.includes('नाम क्या'))
+    return 'मेरा नाम Alex AI है! 🤖 आपका अपना AI Assistant।';
+
+  if (s.includes('कौन हो') || s.includes('who are you'))
+    return 'मैं Alex AI हूँ। एक स्मार्ट Offline Assistant, जिसे हिंदी और English में बात करने के लिए बनाया गया है।';
+
+  if (s.includes('क्या कर सकते') || s.includes('features') || s.includes('help') || s.includes('मदद'))
+    return 'मैं सामान्य सवालों के जवाब, बातचीत, आइडिया और जानकारी देने में मदद कर सकता हूँ। अभी मैं Free Offline Mode में हूँ।';
+
+  if (s.includes('धन्यवाद') || s.includes('thank'))
+    return 'आपका स्वागत है! 😊 Alex AI हमेशा मदद के लिए तैयार है।';
+
+  if (s.includes('कैसे हो') || s.includes('how are you'))
+    return 'मैं बढ़िया काम कर रहा हूँ! 😊 आप कैसे हैं?';
+
+  if (s.includes('समय') || s.includes('time'))
+    return 'सही स्थानीय समय देखने के लिए अपने मोबाइल की घड़ी देखें।';
+
+  if (s.includes('मजाक') || s.includes('joke'))
+    return '😄 टीचर: बताओ बिजली कहाँ से आती है? बच्चा: मामा के घर से! जब भी बिजली जाती है, पापा कहते हैं सालों ने फिर काट दी!';
+
+  if (s.includes('भारत') || s.includes('india'))
+    return 'भारत एक विविधताओं वाला देश है। इसकी राजधानी नई दिल्ली है। 🇮🇳';
+
+  if (s.includes('creator') || s.includes('किसने बनाया'))
+    return 'मुझे Alex AI प्रोजेक्ट के रूप में बनाया गया है। 🤖';
+
+  if (s.includes('bye') || s.includes('अलविदा'))
+    return 'फिर मिलेंगे! 😊 Alex AI इस्तेमाल करने के लिए धन्यवाद।';
+
+  return 'अच्छा सवाल है! 😊 अभी मैं Free Offline Mode में हूँ, इसलिए इसका जवाब मेरे सीमित ज्ञान में उपलब्ध नहीं है।';
+}
+
   s = s.toLowerCase();
 
   if (/^(hi|hello|hey|नमस्ते|हेलो)/.test(s))
