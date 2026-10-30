@@ -11,10 +11,6 @@ function add(t, c) {
   d.textContent = t;
   chat.appendChild(d);
   chat.scrollTop = chat.scrollHeight;
-}
-
-function 
-function localAnswer(s) {
   s = s.toLowerCase().trim();
 
   if (/^(hi|hello|hey|नमस्ते|हेलो|हाय)/.test(s))
