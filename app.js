@@ -1,3 +1,4 @@
+
 const chat = document.querySelector('#chat');
 const q = document.querySelector('#q');
 let mode = 'offline';
@@ -11,6 +12,9 @@ function add(t, c) {
   d.textContent = t;
   chat.appendChild(d);
   chat.scrollTop = chat.scrollHeight;
+}
+
+function localAnswer(s) {
   s = s.toLowerCase().trim();
 
   if (/^(hi|hello|hey|नमस्ते|हेलो|हाय)/.test(s))
@@ -20,13 +24,13 @@ function add(t, c) {
     return 'मेरा नाम Alex AI है! 🤖 आपका अपना AI Assistant।';
 
   if (s.includes('कौन हो') || s.includes('who are you'))
-    return 'मैं Alex AI हूँ। एक स्मार्ट Offline Assistant, जिसे हिंदी और English में बात करने के लिए बनाया गया है।';
+    return 'मैं Alex AI हूँ। एक स्मार्ट Offline Assistant हूँ।';
 
   if (s.includes('क्या कर सकते') || s.includes('features') || s.includes('help') || s.includes('मदद'))
-    return 'मैं सामान्य सवालों के जवाब, बातचीत, आइडिया और जानकारी देने में मदद कर सकता हूँ। अभी मैं Free Offline Mode में हूँ।';
+    return 'मैं सामान्य सवालों के जवाब, बातचीत और आइडिया देने में मदद कर सकता हूँ।';
 
   if (s.includes('धन्यवाद') || s.includes('thank'))
-    return 'आपका स्वागत है! 😊 Alex AI हमेशा मदद के लिए तैयार है।';
+    return 'आपका स्वागत है! 😊';
 
   if (s.includes('कैसे हो') || s.includes('how are you'))
     return 'मैं बढ़िया काम कर रहा हूँ! 😊 आप कैसे हैं?';
@@ -35,32 +39,18 @@ function add(t, c) {
     return 'सही स्थानीय समय देखने के लिए अपने मोबाइल की घड़ी देखें।';
 
   if (s.includes('मजाक') || s.includes('joke'))
-    return '😄 टीचर: बताओ बिजली कहाँ से आती है? बच्चा: मामा के घर से! जब भी बिजली जाती है, पापा कहते हैं सालों ने फिर काट दी!';
+    return '😄 टीचर: बिजली कहाँ से आती है? बच्चा: मामा के घर से!';
 
   if (s.includes('भारत') || s.includes('india'))
-    return 'भारत एक विविधताओं वाला देश है। इसकी राजधानी नई दिल्ली है। 🇮🇳';
+    return 'भारत की राजधानी नई दिल्ली है। 🇮🇳';
 
   if (s.includes('creator') || s.includes('किसने बनाया'))
     return 'मुझे Alex AI प्रोजेक्ट के रूप में बनाया गया है। 🤖';
 
   if (s.includes('bye') || s.includes('अलविदा'))
-    return 'फिर मिलेंगे! 😊 Alex AI इस्तेमाल करने के लिए धन्यवाद।';
+    return 'फिर मिलेंगे! 😊';
 
   return 'अच्छा सवाल है! 😊 अभी मैं Free Offline Mode में हूँ, इसलिए इसका जवाब मेरे सीमित ज्ञान में उपलब्ध नहीं है।';
-}
-
-  s = s.toLowerCase();
-
-  if (/^(hi|hello|hey|नमस्ते|हेलो)/.test(s))
-    return 'नमस्ते! 😊 मैं Alex AI हूँ। आपकी क्या मदद करूँ?';
-
-  if (s.includes('नाम') || s.includes('name'))
-    return 'मेरा नाम Alex AI है! 🤖';
-
-  if (s.includes('मदद') || s.includes('help'))
-    return 'ज़रूर! मैं आपकी मदद करूँगा।';
-
-  return 'मैं अभी Offline Demo हूँ। Online mode चालू करें।';
 }
 
 async function onlineAnswer(s) {
@@ -68,9 +58,7 @@ async function onlineAnswer(s) {
 
   const r = await fetch(ENDPOINT, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: s })
   });
 
@@ -107,7 +95,6 @@ document.querySelector('#form').addEventListener('submit', async e => {
 
 function setMode(m) {
   mode = m;
-
   document.querySelector('#off').classList.toggle('active', m === 'offline');
   document.querySelector('#on').classList.toggle('active', m === 'online');
   document.querySelector('#status').textContent =
